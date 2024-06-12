@@ -1,14 +1,13 @@
 import os
-from dotenv import load_dotenv
 import time
 import psutil
+from threading import Thread
 
 
-load_dotenv('.env.prod')
-HARDWARE_LOGGER_PATH = os.getenv('HARDWARE_LOGGER_PATH')
+
 
 def manage_log_size(log_file, max_lines=3000):
-    """log가 최근 3000줄 까지만 작성되게 해주는 함수"""
+    """log가 최근 max_lines 까지만 작성되게 해주는 함수"""
     with open(log_file, 'r') as file:
         lines = file.readlines()
 
@@ -19,7 +18,7 @@ def manage_log_size(log_file, max_lines=3000):
 
 def write_hw_log():
     """특정 시간마다 HARDWARE_LOGGER_PATH에 로깅"""
-    log_path = os.path.join(HARDWARE_LOGGER_PATH, 'hw.log')
+    log_path = os.path.join(os.getenv('HARDWARE_LOGGER_PATH'), 'hw.log')
     with open(log_path, 'a') as hw_file:
         while True:
             cpu_percent = psutil.cpu_percent(interval=1)
@@ -30,6 +29,10 @@ def write_hw_log():
             hw_file.flush()
             manage_log_size(log_path)
             time.sleep(30)
+
+def start_hw_logger():
+    thread = Thread(target=write_hw_log, daemon=True)
+    thread.start()
 
 
 if __name__ == "__main__":
