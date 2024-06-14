@@ -2,7 +2,7 @@
 
 로거 모듈은 개발 및 배포 후 유지보수를 위해 효율적인 로깅을 제공합니다. 모니터링 모듈과 함께 사용하면 앱 관리를 더욱 효율적으로 할 수 있습니다. 주요 기능은 다음과 같습니다.
 
-# 목차
+# Table of Contents
 
 1. [Logger](#logger)
 2. [Main Features](#main-features)
