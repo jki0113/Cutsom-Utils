@@ -51,14 +51,14 @@ log_colors = {
 if SHOW_LOGGER_TIMESTEP:
     # PM2로 timestep logging option을 지정한 경우(권장) timestep 로깅 자동 지원
     ch_formatter = ColoredFormatter(
-        "%(log_color)s%(levelname)s | %(message)s",
+        "%(log_color)s%(asctime)s | %(levelname)s | %(message)s",
         log_colors=log_colors,
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 else:
     # PM2로 timestep logging option을 지정하지 않은 경우 timesteip 로깅 추가
     ch_formatter = ColoredFormatter(
-        "%(log_color)s%(asctime)s | %(levelname)s | %(message)s",
+        "%(log_color)s%(levelname)s | %(message)s",
         log_colors=log_colors,
     )
 
