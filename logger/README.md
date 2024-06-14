@@ -12,7 +12,6 @@
 6. [Applications](#applications)
 
 
----
 
 ## Main Features
 
@@ -28,7 +27,6 @@ DEBUG, INFO, WARNING, ERROR, CRITICAL 레벨로 로그를 분리하여 계층별
 ### 컬러 로그
 가독성을 위해 특정 색상을 활용하여 로그를 출력할 수 있습니다. 지원 색상: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE
 
----
 
 ## Requirements
 
@@ -43,7 +41,6 @@ SAVE_LOGGER_FILE = "True" # 시스템 로깅 저장 여부
 
 
 
----
 ## Usage
 
 ### 하드웨어 로깅
@@ -107,7 +104,6 @@ async def test_log():
 이렇게 하면 아래와 같은 결과물을 얻을 수 있습니다:
 ![System execution time](assets/sys_logger_3.png)
 
----
 
 ## Testing
 ```bash
@@ -116,7 +112,6 @@ pip install -r requirements.txt
 python main.py
 ```
 
----
 
 ## Applications
 아래 모니터링 모듈과 함께 활용하면 아래와 같이 쉽게 모니터링 시스템을 구축할 수 있습니다.  
