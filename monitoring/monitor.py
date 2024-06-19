@@ -4,6 +4,7 @@ import requests
 import re
 import plotly.express as px
 import pandas as pd
+from config import servers, monitoring_config
 
 st.set_page_config(
     page_title="Server Monitoring",
@@ -30,7 +31,7 @@ def display_sys_log(log_file_or_url):
         logs = read_logs_from_file(log_file_or_url)
     
     sys_log_list = []
-    for log in reversed(logs[-300:]):
+    for log in reversed(logs[-monitoring_config['MAX_LOG_COUNT']:]):
         split_log = log.split('|')
         
         # 로그를 표시해주는 경우 
@@ -59,7 +60,7 @@ def display_hw_logs(log_file_or_url):
     else:
         logs = read_logs_from_file(log_file_or_url)
     time_list, cpu_list, ram_list, ssd_list = [],[],[],[]
-    for log in logs[-300:]:  # 최신 로그 300개만 표시
+    for log in logs[-monitoring_config['MAX_LOG_COUNT']:]:  # 최신 로그 300개만 표시
         split_log = log.split('|')
         time_list.append(split_log[0][6:-2])
         cpu_list.append(extract_percentage(split_log[1][4:]))
@@ -108,17 +109,17 @@ def display_server_dashboard(hw_log_url: str, sys_log_url: str, server_name: str
 
 
 if 'selected_server' not in st.session_state:
-    st.session_state.selected_server = "My Server"
+    st.session_state.selected_server = servers[0]['name']  # 기본값 설정
 
 # Sidebar Configuration
-if st.sidebar.button('My Server'):
-    st.session_state.selected_server = 'My Server'
+for server in servers:
+    if st.sidebar.button(server['name']):
+        st.session_state.selected_server = server['name']
 
-if st.session_state.selected_server == 'My Server':
-    display_server_dashboard(
-        # 'https://<YOUR_URL_PATH>/log/hw.log', 
-        '/root/KyungillJung/Dev/000000-git/Cutsom-Utils/logger/log/hw.log', 
-        # 'https://<YOUR_URL_PATH>/log//sys.log',
-        '/root/KyungillJung/Dev/000000-git/Cutsom-Utils/logger/log/sys.log',
-        'My Server'
-    )
+selected_server_config = next(server for server in servers if server['name'] == st.session_state.selected_server)
+
+display_server_dashboard(
+    selected_server_config['hw_log_url'], 
+    selected_server_config['sys_log_url'], 
+    selected_server_config['name']
+)
