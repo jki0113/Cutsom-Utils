@@ -4,4 +4,4 @@ OpenAI GPT API의 completion과 embedding 기능을 병렬로 처리하여, 분�
 
 ## 사용 방법
 
-본 코드의 자세한 사용 방법과 예시는 [`usage.ipynb`](https://github.com/jki0113/Cutsom-Utils/blob/main/parallel_gpt/usage.ipynbb) Jupyter 노트북에 정리되어 있습니다. 해당 노트북을 통해 각 기능의 구현 방법과 사용 예제를 확인할 수 있습니다.
+본 코드의 자세한 사용 방법과 예시는 [`usage.ipynb`](https://github.com/jki0113/Cutsom-Utils/blob/main/parallel_gpt/usage.ipynb) Jupyter 노트북에 정리되어 있습니다. 해당 노트북을 통해 각 기능의 구현 방법과 사용 예제를 확인할 수 있습니다.
