@@ -1,6 +1,6 @@
 # Parallel GPT
 
-이 프로젝트는 GPT 모델의 completion과 embedding 기능을 병렬로 처리하여, 분당 요청 처리량(RPM: Requests Per Minute)과 분당 토큰 처리량(TPM: Tokens Per Minute)을 최대한 효율적으로 사용할 수 있도록 구현한 코드입니다. Parallel GPT는 대규모 언어 모델을 사용하는 애플리케이션에서 필수적인 효율적인 자원 관리 및 활용을 가능하게 합니다. 이 코드를 통해 사용자는 GPT 모델의 병렬 처리 성능을 극대화하여, 동시에 다수의 요청을 빠르고 효율적으로 처리할 수 있습니다. 본 코드는 OpenAI의 Recipe를 참고하여 개발되었습니다.
+OpenAI GPT API의 completion과 embedding 기능을 병렬로 처리하여, 분당 요청 처리량(RPM: Requests Per Minute)과 분당 토큰 처리량(TPM: Tokens Per Minute)을 최대한 효율적으로 사용할 수 있도록 구현한 코드입니다. 이 코드를 통해 사용자는 OpenAI GPT 모델의 병렬 처리 성능을 극대화하여, 동시에 다수의 요청을 빠르고 효율적으로 처리할 수 있습니다. 본 코드는 OpenAI의 Recipe를 참고하여 개발되었습니다.
 
 ## 사용 방법
 
