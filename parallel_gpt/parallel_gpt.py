@@ -365,37 +365,6 @@ async def process_api_requests_from_prompt_list(
     # return result_list
     return await asyncio.gather(*result_list)
 
-def current_time():
-    now = datetime.datetime.now()
-    return now.strftime('%y%m%d_%H%M%S')
-
-
-def price(input_token, output_token, model):
-    """자동으로 gpt 모델별 사용 금액을 계산해주는 함수"""
-    if model == "gpt-3.5-turbo":
-        return ((input_token * (0.0015/1000)) + (output_token * (0.002/1000)))
-    elif model == 'gpt-4':
-        return ((input_token * (0.03/1000)) + (output_token * (0.06/1000)))
-    else:
-        return 9999
-
-
-def latency_manager(model, latency):
-    if model == 'gpt-4':
-        max_requests_per_minute = 10000 * latency
-        max_tokens_per_minute = 300000 * latency
-    elif model == 'gpt-3.5-turbo':
-        max_requests_per_minute = 12000 * latency
-        max_tokens_per_minute = 1000000 * latency
-    elif model == "text-embedding-ada-002":
-        max_requests_per_minute = 10000 * latency
-        max_tokens_per_minute = 10000000 * latency
-    else:
-        raise ValueError(f"Unsupported model: {model}")
-
-    return max_requests_per_minute, max_tokens_per_minute
-
-
 async def call_gpt_for_chat(
     request_url: str, 
     request_header: dict,
